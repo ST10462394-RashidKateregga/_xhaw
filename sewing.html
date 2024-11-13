@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sewing</title>
+    <title>Sewing - Empowering The Nation</title>
+
+    <meta name="description"
+        content="Enroll in our sewing course to learn alterations, stitching, garment design, and sewing machine techniques.">
+    <meta name="keywords"
+        content="Sewing course, alterations, stitching, sewing machine, garment design, Empowering The Nation">
+    <meta name="author" content="Empowering The Nation">
+
     <style>
         body {
             font-family: sans-serif;
+            background-color: #CFC1AD;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
             width: 800px;
-            margin: 0 auto;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             text-align: center;
+            flex-grow: 1;
         }
 
         .title {
             font-size: 36px;
+            color: #3D3B39;
             margin-bottom: 20px;
         }
 
@@ -24,24 +44,37 @@
             text-align: left;
         }
 
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
         .button {
-            padding: 10px 20px;
-            background-color: #000000;
+            padding: 12px 20px;
+            background-color: #6B4A3B;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: 48%;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #5A3E33;
         }
 
         .logo {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+            height: auto;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             margin-bottom: 20px;
         }
 
@@ -49,16 +82,24 @@
             text-align: left;
             margin-left: 40px;
         }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3D3B39;
+            color: white;
+            width: 100%;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.png" alt="Logo">
+        <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.jpg" alt="Logo">
+        <br><br>
+        <h1 class="title">Sewing</h1>
         <br>
-        <br>
-        <h1 class="title">Sewing</h1> 
-        <br>
-        <img class="image" src="_images/final resized sewing.jpg" alt="sewing">
+        <img class="image" src="_images/final resized sewing.jpg" alt="Sewing">
         <h2>Fees: R1500</h2>
         <div class="content">
             <p>Purpose: To provide alterations and new garment tailoring services</p>
@@ -66,13 +107,25 @@
             <ul>
                 <li>Types of stitches</li>
                 <li>Threading a sewing machine</li>
-                <li>Sewing buttons, zips, hems and seams</li>
+                <li>Sewing buttons, zips, hems, and seams</li>
                 <li>Alterations</li>
                 <li>Designing and sewing new garments</li>
             </ul>
         </div>
         <br>
-        <button class="button" onclick="window.location.href='enroll.html'">Enroll Now</button>
+        <div class="button-container">
+            <button class="button" onclick="window.history.back()">Back</button>
+            <button class="button" onclick="window.location.href='enroll.html'">Enroll Now</button>
+        </div>
     </div>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Empowering The Nation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
+
 </html>

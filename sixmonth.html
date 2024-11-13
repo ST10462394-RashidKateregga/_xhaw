@@ -4,13 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Six Month Courses</title>
+    <title>Six Month Courses - Empowering The Nation</title>
+    <meta name="description"
+        content="Empowering The Nation offers a variety of six-month courses including First Aid, Sewing, Landscaping, and Life Skills.">
+    <meta name="keywords"
+        content="Empowering The Nation, six month courses, First Aid, Sewing, Landscaping, Life Skills">
+
     <style>
         body {
             font-family: sans-serif;
-            background-color: #f0f0f0;
+            background-color: #CFC1AD;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
@@ -18,28 +26,32 @@
             margin: 100px auto;
             background-color: #fff;
             padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             text-align: center;
+            flex-grow: 1;
         }
 
         h1 {
+            font-size: 36px;
+            color: #3D3B39;
             margin-bottom: 20px;
         }
 
         button {
-            background-color: #000000;
+            background-color: #6B4A3B;
             color: white;
             padding: 12px 20px;
             border: none;
-            border-radius: 3px;
+            border-radius: 5px;
             cursor: pointer;
             margin-bottom: 20px;
             width: 100%;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #000000;
+            background-color: #5A3E33;
         }
 
         .logo {
@@ -50,15 +62,19 @@
             height: auto;
         }
 
-        .course-buttons {
-            margin-top: 30px;
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3D3B39;
+            color: white;
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
-    <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.png" alt="Logo">
-    
+    <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.jpg" alt="Logo">
+
     <div class="container">
         <h1>Six Month Courses</h1>
         <div class="course-buttons">
@@ -67,7 +83,16 @@
             <button onclick="window.location.href='landscaping.html'">Landscaping</button>
             <button onclick="window.location.href='life-skills.html'">Life Skills</button>
         </div>
+        <button class="button" onclick="window.history.back()">Back</button>
     </div>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Empowering The Nation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>

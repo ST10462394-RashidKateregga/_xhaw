@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact Us - Empowering The Nation</title>
+
     <style>
         body {
             font-family: sans-serif;
-        }
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #CFC1AD;}
 
-        .container {
+            .container {
             width: 800px;
             margin: 0 auto;
             text-align: center;
+            flex-grow: 1;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-
+        
         .title {
             font-size: 36px;
             margin-bottom: 20px;
+            color: #333;
         }
 
         .content {
@@ -26,24 +38,32 @@
 
         .button {
             padding: 10px 20px;
-            background-color: #000000;
+            background-color: #333;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #444;
         }
 
         .logo {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 10px;
+            left: 10px;
             width: 100px;
-            height: 100px;
+            height: auto;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             margin-bottom: 20px;
+            color: #333;
         }
 
         .contact-info {
@@ -54,21 +74,69 @@
             font-size: 18px;
             line-height: 1.6;
         }
+
+        .map-container {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            width: 100%;
+        }
     </style>
 </head>
+
 <body>
+    <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.jpg" alt="Logo">
+
     <div class="container">
-        <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.png" alt="Logo">
-        <br>
-        <br>
         <h1 class="title">Contact Us</h1>
         <div class="contact-info">
             <h2>Get in Touch</h2>
             <p>Email: <a href="mailto:empoweringthenation@gmail.com">empoweringthenation@gmail.com</a></p>
             <p>Phone: <a href="tel:02147855561">02147855561</a></p>
-            <p>We are always ready to assist you with any inquiries or support you need. Feel free to reach out to us through the contact details above.</p>
+            <p>We are always ready to assist you with any inquiries or support you need. Feel free to reach out to us
+                through the contact details above.</p>
         </div>
-        <button class="button" onclick="window.location.href='index.html'">Back to Home</button>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3583.163708864989!2d28.045170876509797!3d-26.093574177144873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95733c18d3cb89%3A0xed59860bb3c2c891!2sThe%20IIE's%20Varsity%20College%20-%20Sandton!5e0!3m2!1sen!2sza!4v1730795305516!5m2!1sen!2sza"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1646215.4179076096!2d28.063325422958574!3d-26.315475696412218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e956e1dcaf8503f%3A0xf5bfc8db3056190c!2sThe%20IIE's%20Varsity%20College%20-%20Waterfall-Midrand!5e0!3m2!1sen!2sza!4v1730795469027!5m2!1sen!2sza"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <button class="button" onclick="window.location.href='homepage.html'">Back to Home</button>
+        <button class="button" onclick="window.location.href='enroll.html'">Enroll</button>
     </div>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Empowering The Nation. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
+
 </html>

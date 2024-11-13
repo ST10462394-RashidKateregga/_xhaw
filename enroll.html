@@ -4,20 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate Total Fees</title>
+    <title>Calculate Total Fees - Empowering The Nation</title>
+
     <style>
         body {
             font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #CFC1AD;
         }
 
         .container {
             width: 800px;
             margin: 0 auto;
             text-align: center;
+            flex-grow: 1;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .title {
             font-size: 36px;
+            color: #333;
             margin-bottom: 20px;
         }
 
@@ -29,63 +41,99 @@
             display: block;
             text-align: left;
             margin-bottom: 5px;
+            color: #555;
         }
 
-        .form-group input {
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="email"] {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .error {
+            border-color: red;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: left;
+            margin-top: -8px;
+            margin-bottom: 8px;
         }
 
         .course-list {
             text-align: left;
             margin-left: 20px;
+            color: #555;
         }
 
         .button {
-            padding: 10px 20px;
-            background-color: #000000;
+            padding: 12px 24px;
+            background-color: #6B4A3B;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px; 
+        }
+
+        .button:hover {
+            background-color: #444;
         }
 
         .total-fee {
             font-size: 24px;
+            color: #333;
             margin-top: 20px;
         }
 
         .logo {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+            height: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
+    <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.jpg" alt="Logo">
+
     <div class="container">
-        <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.png" alt="Logo">
         <h1 class="title">Calculate Total Fees</h1>
 
-        <!-- Form starts here -->
         <form id="feeForm" action="/submit" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                <div class="error-message" id="nameError"></div>
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                <div class="error-message" id="phoneError"></div>
             </div>
 
             <div class="form-group">
                 <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <div class="error-message" id="emailError"></div>
             </div>
 
             <div class="form-group">
@@ -102,29 +150,72 @@
             </div>
 
             <button type="button" class="button" onclick="calculateTotal()">Calculate Total Fees</button>
-
         </form>
-    
 
+        <button class="button" onclick="window.location.href='homepage.html'">Back to Home</button>
         <div class="total-fee" id="totalFee">Total Fee: R0</div>
     </div>
 
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Empowering The Nation. All rights reserved.</p>
+    </footer>
+
     <script>
+        function validateFields() {
+            let isValid = true;
+
+            document.getElementById('name').classList.remove('error');
+            document.getElementById('phone').classList.remove('error');
+            document.getElementById('email').classList.remove('error');
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('phoneError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+
+            const name = document.getElementById('name');
+            if (!name.value) {
+                name.classList.add('error');
+                document.getElementById('nameError').textContent = 'Please fill in your name.';
+                isValid = false;
+            }
+
+            const phone = document.getElementById('phone');
+            if (!phone.value) {
+                phone.classList.add('error');
+                document.getElementById('phoneError').textContent = 'Please fill in your phone number.';
+                isValid = false;
+            }
+
+            const email = document.getElementById('email');
+            if (!email.value) {
+                email.classList.add('error');
+                document.getElementById('emailError').textContent = 'Please fill in your email address.';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
         function calculateTotal() {
+            if (!validateFields()) {
+                return;
+            }
+
             const vatRate = 0.15;
             let discountRate = 0;
             let total = 0;
 
             const selectedCourses = document.querySelectorAll('input[name="courses"]:checked');
-            const courseArray = [];
+            if (selectedCourses.length === 0) {
+                alert('Please select at least one course.');
+                return;
+            }
 
             selectedCourses.forEach(course => {
                 total += parseFloat(course.value);
-                courseArray.push(course.id);
             });
 
             if (selectedCourses.length >= 3) {
-                discountRate = 0.10; // 10% discount for 3 or more courses
+                discountRate = 0.10;
             }
 
             const discount = total * discountRate;
@@ -134,9 +225,9 @@
             total += vat;
 
             document.getElementById('totalFee').innerHTML = `Total Fee (with VAT): R${total.toFixed(2)}`;
-
-            console.log('Selected Courses:', courseArray);
         }
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 
 </body>

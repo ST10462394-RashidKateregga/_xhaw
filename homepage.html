@@ -4,64 +4,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empowering The Nation</title>
+    <title>Empowering The Nation - Courses for Personal and Professional Growth</title>
+    <meta name="description"
+        content="Empowering The Nation offers courses in various skills for personal and professional development. Choose from short-term to intensive training programs.">
+    <meta name="keywords"
+        content="Empowering The Nation, courses, training, personal growth, professional development, skills training, enroll now">
+
+
     <style>
         body {
             font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #CFC1AD;
         }
 
         .container {
             width: 800px;
             margin: 0 auto;
             text-align: center;
+            flex-grow: 1;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .title {
             font-size: 36px;
+            color: #3D3B39;
             margin-bottom: 20px;
         }
 
         .image {
             width: 100%;
             height: 300px;
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
             background-size: cover;
             background-position: center;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
         }
 
         .button {
-            padding: 10px 20px;
-            background-color: #000000;
+            padding: 12px 24px;
+            background-color: #6B4A3B;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #5A3E33;
         }
 
         .logo {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+            height: 80px;
+        }
+
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+            margin: 3px 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #F9F9F9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3D3B39;
+            color: white;
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
+    <div class="menu" onclick="toggleDropdown()">
+        <div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-content" id="dropdownMenu">
+            <a href="sixweek.html">6-Week Course</a>
+            <a href="sixmonth.html">6-Month Course</a>
+            <a href="enroll.html">Enroll</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
     <div class="container">
-        <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.png" alt="Logo">
-        <br>
-        <br>
-        <br>
-        <br>
+        <img class="logo" src="_images/Black and White Simple Monoline Camping Camping Logo.jpg" alt="Logo">
         <h1 class="title">Empowering The Nations</h1>
-        <br>
-        <br>
         <div class="image" style="background-image: url('_images/xhaw home page.jpg');"></div>
         <button class="button" onclick="window.location.href='courses.html'">Select your course</button>
+        <button class="button" onclick="window.location.href='contact.html'">Contact Us</button>
     </div>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Empowering The Nation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        window.onclick = function (event) {
+            if (!event.target.closest('.menu')) {
+                document.getElementById("dropdownMenu").style.display = "none";
+            }
+        };
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
